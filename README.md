@@ -1,11 +1,11 @@
-# Uni Selectable
+﻿# Uni Selectable
 
 * 値が変更された時にコールバックが呼び出されるクラス
 
 ## 使用例
 
 ```cs
-using UniSelectable;
+using Kogane;
 using UnityEngine;
 
 public class Example : MonoBehaviour
@@ -33,7 +33,7 @@ public class Example : MonoBehaviour
 ```
 
 ```cs
-using UniSelectable;
+using Kogane;
 using UnityEngine;
 
 public class Example : MonoBehaviour

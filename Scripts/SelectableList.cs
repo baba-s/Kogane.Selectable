@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace UniSelectable
+namespace Kogane
 {
 	/// <summary>
 	/// 変更を検知可能なリスト

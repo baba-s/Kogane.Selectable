@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UniSelectable
+namespace Kogane
 {
 	/// <summary>
 	/// 選択中の bool 値を管理するクラス
