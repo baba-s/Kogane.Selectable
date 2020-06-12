@@ -91,5 +91,10 @@ namespace Kogane
 		protected virtual void DoOnChanged()
 		{
 		}
+
+		/// <summary>
+		/// 型変換演算子
+		/// </summary>
+		public static implicit operator T( Selectable<T> self ) => self.Value;
 	}
 }
