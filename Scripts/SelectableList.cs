@@ -10,6 +10,7 @@ namespace Kogane
 	/// </summary>
 	public class SelectableList<T> :
 		IList<T>,
+		IReadOnlyList<T>,
 		IDisposable
 	{
 		private readonly List<T> m_list; // リスト
