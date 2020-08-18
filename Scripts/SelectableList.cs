@@ -72,7 +72,7 @@ namespace Kogane
 		/// <summary>
 		/// コンストラクタ
 		/// </summary>
-		public SelectableList( IList<T> collection )
+		public SelectableList( IEnumerable<T> collection )
 		{
 			m_list = new List<T>( collection );
 		}
@@ -90,13 +90,13 @@ namespace Kogane
 		/// <summary>
 		/// リストからすべての要素を削除して、指定したコレクションの要素を List に追加します
 		/// </summary>
-		public void Set( IList<T> collection )
+		public void Set( IEnumerable<T> collection )
 		{
 			m_list.Clear();
 			m_list.AddRange( collection );
 			OnChange?.Invoke();
 		}
-
+		
 		/// <summary>
 		/// <para>リストからすべての要素を削除して、指定したコレクションの要素を List に追加します</para>
 		/// <para>値の設定後に mChanged イベントは呼び出されません</para>
@@ -111,7 +111,7 @@ namespace Kogane
 		/// <para>リストからすべての要素を削除して、指定したコレクションの要素を List に追加します</para>
 		/// <para>値の設定後に mChanged イベントは呼び出されません</para>
 		/// </summary>
-		public void SetWithoutCallback( IList<T> collection )
+		public void SetWithoutCallback( IEnumerable<T> collection )
 		{
 			m_list.Clear();
 			m_list.AddRange( collection );
