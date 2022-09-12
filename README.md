@@ -1,4 +1,4 @@
-﻿# Uni Selectable
+﻿# Kogane Selectable
 
 値が変更された時にコールバックが呼び出されるクラス
 
