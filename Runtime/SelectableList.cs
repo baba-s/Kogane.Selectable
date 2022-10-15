@@ -58,7 +58,7 @@ namespace Kogane
         /// </summary>
         public SelectableList()
         {
-            m_list = new List<T>();
+            m_list = new();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Kogane
         /// </summary>
         public SelectableList( params T[] collection )
         {
-            m_list = new List<T>( collection );
+            m_list = new( collection );
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Kogane
         /// </summary>
         public SelectableList( IEnumerable<T> collection )
         {
-            m_list = new List<T>( collection );
+            m_list = new( collection );
         }
 
         /// <summary>
