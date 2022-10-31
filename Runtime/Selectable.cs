@@ -67,7 +67,7 @@ namespace Kogane
         /// </summary>
         public void SetValueIfNotEqual( T value )
         {
-            if ( m_value.Equals( value ) ) return;
+            if ( Equals( m_value, value ) ) return;
 
             m_value = value;
             OnChanged();
