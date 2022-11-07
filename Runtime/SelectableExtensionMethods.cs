@@ -29,10 +29,23 @@ namespace Kogane
         /// <summary>
         /// 次の数値に進みます
         /// </summary>
-        public static void NextClamp( this Selectable<int> self, int max )
+        public static bool NextClamp( this Selectable<int> self, int max )
         {
             var value = Math.Min( self.Value + 1, max - 1 );
+            if ( self.Value == value ) return false;
             self.SetValueIfNotEqual( value );
+            return true;
+        }
+
+        /// <summary>
+        /// 次の数値に進みます
+        /// </summary>
+        public static void NextClamp( this Selectable<int> self, int max, Action onChanged )
+        {
+            if ( self.NextClamp( max ) )
+            {
+                onChanged?.Invoke();
+            }
         }
 
         /// <summary>
@@ -57,10 +70,23 @@ namespace Kogane
         /// <summary>
         /// 前の数値に戻ります
         /// </summary>
-        public static void PrevClamp( this Selectable<int> self, int min )
+        public static bool PrevClamp( this Selectable<int> self, int min )
         {
             var value = Math.Max( self.Value - 1, min );
+            if ( self.Value == value ) return false;
             self.SetValueIfNotEqual( value );
+            return true;
+        }
+
+        /// <summary>
+        /// 前の数値に戻ります
+        /// </summary>
+        public static void PrevClamp( this Selectable<int> self, int min, Action onChanged )
+        {
+            if ( self.PrevClamp( min ) )
+            {
+                onChanged?.Invoke();
+            }
         }
     }
 }
