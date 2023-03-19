@@ -63,6 +63,16 @@ namespace Kogane
 
         /// <summary>
         /// <para>値を設定します</para>
+        /// <para>値の設定後に mChanged イベントは呼び出されません</para>
+        /// </summary>
+        public void SetValueWithoutCallbackIf( bool condition, T value )
+        {
+            if ( !condition ) return;
+            SetValueWithoutCallback( value );
+        }
+
+        /// <summary>
+        /// <para>値を設定します</para>
         /// <para>値が変更された場合にのみ mChanged イベントが呼び出されます</para>
         /// </summary>
         public void SetValueIfNotEqual( T value )
@@ -104,5 +114,7 @@ namespace Kogane
         /// 型変換演算子
         /// </summary>
         public static implicit operator T( Selectable<T> self ) => self.Value;
+
+        public override string ToString() => Value.ToString();
     }
 }
