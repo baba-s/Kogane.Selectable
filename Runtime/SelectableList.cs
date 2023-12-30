@@ -10,7 +10,7 @@ namespace Kogane
     /// </summary>
     public class SelectableList<T> :
         IList<T>,
-        IReadOnlyList<T>,
+        IReadOnlySelectableList<T>,
         IDisposable
     {
         private readonly List<T> m_list; // リスト
@@ -64,6 +64,14 @@ namespace Kogane
         /// <summary>
         /// コンストラクタ
         /// </summary>
+        public SelectableList( int capacity )
+        {
+            m_list = new( capacity );
+        }
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public SelectableList( params T[] collection )
         {
             m_list = new( collection );
@@ -75,6 +83,15 @@ namespace Kogane
         public SelectableList( IEnumerable<T> collection )
         {
             m_list = new( collection );
+        }
+
+        /// <summary>
+        /// <para>指定したインデックスに要素を設定します</para>
+        /// <para>値の設定後に mChanged イベントは呼び出されません</para>
+        /// </summary>
+        public void SetWithoutCallback( int index, T value )
+        {
+            m_list[ index ] = value;
         }
 
         /// <summary>
@@ -152,12 +169,30 @@ namespace Kogane
         }
 
         /// <summary>
+        /// <para>リスト内の指定したインデックスの位置に要素を挿入します</para>
+        /// <para>値の設定後に mChanged イベントは呼び出されません</para>
+        /// </summary>
+        public void InsertWithoutCallback( int index, T item )
+        {
+            m_list.Insert( index, item );
+        }
+
+        /// <summary>
         /// リストの指定したインデックスにある要素を削除します
         /// </summary>
         public void RemoveAt( int index )
         {
             m_list.RemoveAt( index );
             OnChange?.Invoke();
+        }
+
+        /// <summary>
+        /// <para>リストの指定したインデックスにある要素を削除します</para>
+        /// <para>値の設定後に mChanged イベントは呼び出されません</para>
+        /// </summary>
+        public void RemoveAtWithoutCallback( int index )
+        {
+            m_list.RemoveAt( index );
         }
 
         /// <summary>
